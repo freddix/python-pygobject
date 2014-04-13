@@ -82,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 
 install -D docs/style.css $RPM_BUILD_ROOT%{_datadir}/pygobject/css/style.css
 
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/*/{*.la,*/*.la}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/*/{*.la,*/*.la}
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}
 %py_ocomp $RPM_BUILD_ROOT%{_datadir}
@@ -111,18 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/*.py[co]
 %{py_sitedir}/pygtk.pth
 
-# provided by pygobject3
-%if 0
-%dir %{py_sitedir}/gi
-%dir %{py_sitedir}/gi/overrides
-%dir %{py_sitedir}/gi/repository
-%attr(755,root,root) %{py_sitedir}/gi/_gi.so
-%attr(755,root,root) %{py_sitedir}/gi/_gi_cairo.so
-%{py_sitedir}/gi/*.py[co]
-%{py_sitedir}/gi/overrides/*.py[co]
-%{py_sitedir}/gi/repository/*.py[co]
-%endif
-
 %dir %{py_sitedir}/glib
 %attr(755,root,root) %{py_sitedir}/glib/*.so
 %{py_sitedir}/glib/*.py[co]
@@ -148,6 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{module}/xsl/*.xsl
 %{_datadir}/%{module}/2.0/defs
 %{_datadir}/%{module}/2.0/codegen/*.py[co]
+%endif
 
 %files apidocs
 %defattr(644,root,root,755)

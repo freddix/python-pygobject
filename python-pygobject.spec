@@ -3,7 +3,7 @@
 Summary:	Python bindings for GObject library
 Name:		python-%{module}
 Version:	2.28.6
-Release:	6
+Release:	7
 License:	LGPL
 Group:		Libraries/Python
 Source0:	http://ftp.gnome.org/pub/gnome/sources/pygobject/2.28/%{module}-%{version}.tar.bz2
@@ -83,6 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 install -D docs/style.css $RPM_BUILD_ROOT%{_datadir}/pygobject/css/style.css
 
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/*/{*.la,*/*.la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}
 %py_ocomp $RPM_BUILD_ROOT%{_datadir}
